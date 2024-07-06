@@ -23,6 +23,11 @@ jobs:
       env:
         CI: false
 
+    - name: Config git user
+      run: |
+        git config --local user.name  ${{ github.actor }}        
+        git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+
     - name: Deploy React app
       run: npm run deploy -- -m "Deploy React app to GitHub Pages"
       env:
