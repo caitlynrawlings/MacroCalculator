@@ -30,6 +30,7 @@ jobs:
 
     - name: Deploy React app
       env:
+        CI: false
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.name  ${{ github.actor }}
