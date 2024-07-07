@@ -30,4 +30,4 @@ jobs:
       run: |
         git config --local user.name  ${{ github.actor }}
         git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-        npm run deploy -- -m "Deploy React app to GitHub Pages"
+        npm run deploy
