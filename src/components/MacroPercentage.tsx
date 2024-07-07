@@ -7,7 +7,7 @@ import {
   const MacroPercentage: React.FC<{ macro: string, percentage: number }> = ({ macro, percentage }) => {
     return (
       <HStack spacing="24px">
-        <Text>{macro}: {100 * percentage}%</Text>
+        <Text>{macro}: {parseFloat((100 * percentage).toFixed(2))}%</Text>
       </HStack>
     );
   };
