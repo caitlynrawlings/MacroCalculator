@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ChakraProvider as ChakraBaseProvider } from '@chakra-ui/react'; // Changed ChakraBaseProvider to ChakraProvider
+import { ChakraProvider as ChakraBaseProvider } from '@chakra-ui/react';
+import { Container, Center } from '@chakra-ui/react'
 import theme from './theme.ts';
 import EnterInfo from './pages/EnterInfo.tsx';
 import Results from './pages/Results.tsx';
@@ -25,17 +26,26 @@ const App = () => {
 
   return (
     <ChakraBaseProvider theme={theme}>
-      {currentPage === 'EnterInfo' && (
-        <EnterInfo
-          onCalculate={loadResults}
-          // Add EnterInfo-specific props here
-        />
-      )}
-      {currentPage === 'Results' && (
-        <Results carb={carb} protein={protein} fat={fat} onBack={loadEnter}
-          // Add Result-specific props here
-        />
-      )}
+      <Center marginTop='15vh'>
+        <Container maxW='lg'>
+          {currentPage === 'EnterInfo' && (
+            <EnterInfo
+              carb={carb} 
+              protein={protein} 
+              fat={fat}
+              onCalculate={loadResults}
+            />
+          )}
+          {currentPage === 'Results' && (
+            <Results 
+              carb={carb} 
+              protein={protein} 
+              fat={fat} 
+              onBack={loadEnter}
+            />
+          )}
+        </Container>
+      </Center>
     </ChakraBaseProvider>
   );
 };

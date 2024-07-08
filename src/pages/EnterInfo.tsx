@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Text, Center, Stack, Button} from '@chakra-ui/react'
+import { Heading, Card, CardHeader, CardBody, CardFooter, Text, Center, Stack, Button} from '@chakra-ui/react'
 import MacroInput from '../components/MacroInput.tsx'
 
-const EnterInfo: React.FC<{ onCalculate: (protein: number, carb: number, fat: number) => void }> = ({ onCalculate }) => {
-  const [proteinAmount, setProteinAmount] = useState<number>(0);
-  const [CarbAmount, setCarbAmount] = useState<number>(0);
-  const [FatAmount, setFatAmount] = useState<number>(0);
+const EnterInfo: React.FC<{ protein: number, carb: number, fat: number, onCalculate: (protein: number, carb: number, fat: number) => void }> = ({ protein, carb, fat, onCalculate }) => {
+  const [proteinAmount, setProteinAmount] = useState<number>(protein);
+  const [CarbAmount, setCarbAmount] = useState<number>(carb);
+  const [FatAmount, setFatAmount] = useState<number>(fat);
 
   const handleProteinChange = (value: number) => {
     setProteinAmount(value);
@@ -25,25 +25,24 @@ const EnterInfo: React.FC<{ onCalculate: (protein: number, carb: number, fat: nu
   };
 
   return (
-    <Center h='90vh'>
-      <Card>
-        <CardHeader>
-          Enter your intake of each macro: 
-        </CardHeader>
-        <CardBody>
-          <Stack spacing='24px'>
-            <MacroInput label='protein' onAmountChange={handleProteinChange}></MacroInput>
-            <MacroInput label='fat' onAmountChange={handleFatChange}></MacroInput>
-            <MacroInput label='carb' onAmountChange={handleCarbChange}></MacroInput>
-          </Stack>
-        </CardBody>
-        <CardFooter>
-          <Button colorScheme='teal' size='md' onClick={handleCalculate}>
-            Calculate
-          </Button>
-        </CardFooter>
-      </Card>
-    </Center>
+    <Card>
+      <CardHeader>
+        <Heading as='h1' size='lg'>Macros Calculator </Heading>
+      </CardHeader>
+      <CardBody>
+        <Stack spacing='16px'>
+          <Text>Enter your intake of each macro: </Text>
+          <MacroInput label='carbs' defaultVal={carb} onAmountChange={handleCarbChange}></MacroInput>
+          <MacroInput label='fat' defaultVal={fat} onAmountChange={handleFatChange}></MacroInput>
+          <MacroInput label='protein' defaultVal={protein} onAmountChange={handleProteinChange}></MacroInput>
+        </Stack>
+      </CardBody>
+      <CardFooter>
+        <Button colorScheme='teal' size='md' onClick={handleCalculate}>
+          Calculate
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

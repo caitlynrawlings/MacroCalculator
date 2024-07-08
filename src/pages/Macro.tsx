@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Text, Center, Stack, Button} from '@chakra-ui/react'
+import React from 'react';
+import { Heading, Link, Card, CardHeader, CardBody, CardFooter, Text, Stack, Button} from '@chakra-ui/react'
 
 const Summary: React.FC<{ macro: string, amount: number, percentage: number, minRecommendation: number, maxRecommendation: number, source: string, onBack: () => void }> = ({ macro, amount, percentage, minRecommendation, maxRecommendation, source, onBack }) => {
 
@@ -11,7 +11,6 @@ const Summary: React.FC<{ macro: string, amount: number, percentage: number, min
     } else {  // if the percentage of this macro in diet is greater than the recommended
       const total = amount / (percentage / 100);
       const otherMacros = total - amount;
-      console.log(otherMacros)
       const diff = (((100 - maxRecommendation) / 100) * total - otherMacros) / (1 - ((100 - maxRecommendation) / 100))
       return diff.toFixed(2)
     }
@@ -20,20 +19,22 @@ const Summary: React.FC<{ macro: string, amount: number, percentage: number, min
   return (
     <Card>
         <CardHeader>
-          {macro}: {percentage}%
+          <Heading as='h1' size='md' noOfLines={1}>
+            {macro}
+          </Heading>
         </CardHeader>
         <CardBody>
-          <Stack spacing='24px'>
-            <Text>It's recommended for {minRecommendation}-{maxRecommendation}% of your diet to come from {macro}. </Text>
-            <Text>Source: {source} </Text>
+          <Stack spacing='16px'>
+            <Text>{macro}: {percentage}%</Text>
+            <Text>It's recommended for {minRecommendation}-{maxRecommendation}% of your diet to come from {macro.toLocaleLowerCase()} (<Link color='teal.500' href={source}>Source</Link>).</Text>
             {percentage < minRecommendation && (
-              <Text>To reach this recommendation with the current macro amount, {macro} intake would need to increase by {calculateChange("under")} grams.</Text>
+              <Text>To reach this recommendation with the current macro amount, {macro.toLocaleLowerCase()} intake would need to increase by {calculateChange("under")} grams.</Text>
             )}
             {percentage > maxRecommendation && (
               <Text>To reach this recommendation with the current macro amount, other macro intake would need to increase by a combined {calculateChange("over")} grams.</Text>
             )}
             {percentage <= maxRecommendation && percentage >= minRecommendation && (
-              <Text>Current macro amount is in this range.</Text>
+              <Text>Current {macro.toLocaleLowerCase()} intake is in recommendation range.</Text>
             )}
           </Stack>
         </CardBody>

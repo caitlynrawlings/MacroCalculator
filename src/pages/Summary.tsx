@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Text, Center, Stack, Button} from '@chakra-ui/react'
+import React from 'react';
+import { Card, CardHeader, CardBody, CardFooter, Text, Center, Stack, Button, Heading} from '@chakra-ui/react'
 import MacroPercentage from '../components/MacroPercentage.tsx'
 
 const Summary: React.FC<{ protein: number, carb: number, fat: number, onBack: () => void }> = ({ protein, carb, fat, onBack }) => {
@@ -8,13 +8,13 @@ const Summary: React.FC<{ protein: number, carb: number, fat: number, onBack: ()
   return (
     <Card>
         <CardHeader>
-          Percentages of each macro in diet: 
+          <Heading as='h1' size='md'>Percentages of each macro in diet: </Heading>
         </CardHeader>
         <CardBody>
-          <Stack spacing='24px'>
-            <MacroPercentage macro='protein' percentage={protein/total}></MacroPercentage>
-            <MacroPercentage macro='fat' percentage={fat/total}></MacroPercentage>
-            <MacroPercentage macro='carb' percentage={carb/total}></MacroPercentage>
+          <Stack spacing='16px'>
+            <MacroPercentage macro='Carbs' percentage={carb/total}></MacroPercentage>
+            <MacroPercentage macro='Fat' percentage={fat/total}></MacroPercentage>
+            <MacroPercentage macro='Protein' percentage={protein/total}></MacroPercentage>
           </Stack>
         </CardBody>
         <CardFooter>
