@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TabList, Tab, TabPanel, TabPanels} from '@chakra-ui/react'
+import { Tabs, TabList, Tab, TabPanel, TabPanels } from '@chakra-ui/react'
 import Macro from './Macro.tsx'
 import Summary from './Summary.tsx';
 

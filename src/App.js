@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChakraProvider as ChakraBaseProvider } from '@chakra-ui/react';
 import { Container, Center } from '@chakra-ui/react'
 import theme from './theme.ts';
-import EnterInfo from './pages/EnterInfo.tsx';
+import Start from './pages/EnterInfo.tsx';
 import Results from './pages/Results.tsx';
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
       <Center marginTop='15vh'>
         <Container maxW='lg'>
           {currentPage === 'EnterInfo' && (
-            <EnterInfo
+            <Start
               carb={carb} 
               protein={protein} 
               fat={fat}
