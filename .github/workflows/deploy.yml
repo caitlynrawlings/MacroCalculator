@@ -30,4 +30,4 @@ jobs:
       run: |
         git config --local user.name  ${{ github.actor }}
         git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-        npm run deploy
+        npx gh-pages -d build -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
