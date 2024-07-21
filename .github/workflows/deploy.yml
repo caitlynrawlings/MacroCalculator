@@ -23,11 +23,11 @@ jobs:
       env:
         CI: false
 
-    - name: Deploy React app
+    - name: Run deploy script
       env:
         CI: false
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --local user.name  ${{ github.actor }}
         git config --local user.email "${{ github.actor }}@users.noreply.github.com"
-        npx gh-pages -d build -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        npm run deploy -- -m "Deploy React app to GitHub Pages"
