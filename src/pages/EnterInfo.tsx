@@ -28,7 +28,7 @@ const Start: React.FC<{ protein: number, carb: number, fat: number, onCalculate:
     return(
       <Card>
         <CardHeader>
-          <Heading as='h1' size='lg'>Macros Calculator </Heading>
+          <Heading as='h1' size='md'>Macros Calculator </Heading>
         </CardHeader>
         <CardBody>
           <Stack spacing='16px'>
