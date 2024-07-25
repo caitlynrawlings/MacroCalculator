@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { ChakraProvider as ChakraBaseProvider } from '@chakra-ui/react';
 import { Container, Center } from '@chakra-ui/react'
 import theme from './theme.ts';
-import Start from './pages/EnterInfo.tsx';
+import Start from './pages/Start.tsx';
 import Results from './pages/Results.tsx';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('EnterInfo');
+  const [currentPage, setCurrentPage] = useState('Start');
   const [carb, setCarb] = useState(0);
   const [protein, setProtein] = useState(0);
   const [fat, setFat] = useState(0);
@@ -21,14 +21,14 @@ const App = () => {
 
   // Function to change the current page
   const loadEnter = () => {
-    setCurrentPage('EnterInfo');
+    setCurrentPage('Start');
   };
 
   return (
     <ChakraBaseProvider theme={theme}>
       <Center marginTop='15vh'>
         <Container maxW='lg'>
-          {currentPage === 'EnterInfo' && (
+          {currentPage === 'Start' && (
             <Start
               carb={carb} 
               protein={protein} 

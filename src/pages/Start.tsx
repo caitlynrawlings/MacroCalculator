@@ -3,43 +3,44 @@ import { Heading, Card, CardHeader, CardBody, CardFooter, Text, Stack, Button,  
 import MacroInput from '../components/MacroInput.tsx'
 
 const Start: React.FC<{ protein: number, carb: number, fat: number, onCalculate: (protein: number, carb: number, fat: number) => void }> = ({ protein, carb, fat, onCalculate }) => {
-  const [proteinAmount, setProteinAmount] = useState<number>(protein);
-  const [CarbAmount, setCarbAmount] = useState<number>(carb);
-  const [FatAmount, setFatAmount] = useState<number>(fat);
 
-  const handleProteinChange = (value: number) => {
-    setProteinAmount(value);
-  };
-
-  const handleCarbChange = (value: number) => {
-    setCarbAmount(value);
-  };
-
-  const handleFatChange = (value: number) => {
-    setFatAmount(value);
-  };
-
-  const handleCalculate = () => {
+  const handleCalculate = (proteinAmount: number, carbAmount: number, fatAmount: number) => {
     // Call onCalculate callback with current values
-    onCalculate(proteinAmount, CarbAmount, FatAmount);
+    onCalculate(proteinAmount, carbAmount, fatAmount);
   };
 
   const EnterInfo = () => {
-    return(
+    const [proteinAmount, setProteinAmount] = useState<number>(protein);
+    const [carbAmount, setCarbAmount] = useState<number>(carb);
+    const [fatAmount, setFatAmount] = useState<number>(fat);
+
+    const handleProteinChange = (value: number) => {
+      setProteinAmount(value);
+    };
+
+    const handleCarbChange = (value: number) => {
+      setCarbAmount(value);
+    };
+
+    const handleFatChange = (value: number) => {
+      setFatAmount(value);
+    };
+
+    return (
       <Card>
         <CardHeader>
-          <Heading as='h1' size='md'>Macros Calculator </Heading>
+          <Heading as='h1' size='md'>Macro Calculator </Heading>
         </CardHeader>
         <CardBody>
           <Stack spacing='16px'>
             <Text>Enter your intake of each macro: </Text>
-            <MacroInput label='carbs' defaultVal={carb} onAmountChange={handleCarbChange}></MacroInput>
-            <MacroInput label='fat' defaultVal={fat} onAmountChange={handleFatChange}></MacroInput>
-            <MacroInput label='protein' defaultVal={protein} onAmountChange={handleProteinChange}></MacroInput>
+            <MacroInput label='carbs' defaultVal={carbAmount} onAmountChange={handleCarbChange}></MacroInput>
+            <MacroInput label='fat' defaultVal={fatAmount} onAmountChange={handleFatChange}></MacroInput>
+            <MacroInput label='protein' defaultVal={proteinAmount} onAmountChange={handleProteinChange}></MacroInput>
           </Stack>
         </CardBody>
         <CardFooter>
-          <Button colorScheme='teal' size='md' onClick={handleCalculate}>
+          <Button colorScheme='teal' size='md' onClick={() => handleCalculate(proteinAmount, carbAmount, fatAmount)}>
             Calculate
           </Button>
         </CardFooter>
@@ -74,7 +75,7 @@ const Start: React.FC<{ protein: number, carb: number, fat: number, onCalculate:
   return (
     <Tabs variant='soft-rounded' colorScheme='teal'>
       <TabList>
-        <Tab>Enter Macros</Tab>
+        <Tab>Macro Calculator</Tab>
         <Tab>More Information</Tab>
       </TabList>
       <TabPanels>
