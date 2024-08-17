@@ -24,9 +24,3 @@ Inspiration, code snippets, etc.
 * [Create React App](https://create-react-app.dev/)
 * [react-gh-pages](https://github.com/gitname/react-gh-pages)
 
-## TODOS
-- [x] Make card fixed width and pinned in place
-- [x] Save previously entered macro values after hitting calculate
-- [ ] Commenting code
-- [ ] Screenreader accessibility
-- [ ] Deploy workflow
