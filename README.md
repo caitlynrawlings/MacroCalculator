@@ -1,6 +1,6 @@
 # Macros Calculator
 
-Calculate the percentage of each macronutrient from an inputted diet.
+Calculates the percentage of each macronutrient in the user's diet and the intake changes required to meet recommended percentages.
 
 ## Motivation
 
